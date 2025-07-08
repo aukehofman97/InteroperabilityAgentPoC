@@ -1,14 +1,29 @@
 from fastapi import FastAPI, UploadFile, File
 from fastapi.responses import JSONResponse
+from fastapi.middleware.cors import CORSMiddleware
 import json
-from keytransformer import map_all_keys_to_ontology
-from event_creator import generate_event_for_record
+
+from keytransformer_module import map_all_keys_to_ontology
+from event_creator_module import generate_event_for_record
 
 app = FastAPI(
     title="Logistics Event Transformer API",
     description="Upload anonymized logistics records and get back FEDeRATED-compatible events.",
     version="1.0.0"
 )
+
+# Enable CORS for external access
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Adjust if you want to restrict access
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+@app.get("/")
+def root():
+    return {"message": "LLM Transformation API is live 🚀"}
 
 @app.post("/transform/")
 async def transform_file(file: UploadFile = File(...)):

@@ -47,3 +47,4 @@ typing-inspection==0.4.1
 typing_extensions==4.14.0
 urllib3==2.5.0
 uvicorn==0.31.0
+python-multipart==0.0.15

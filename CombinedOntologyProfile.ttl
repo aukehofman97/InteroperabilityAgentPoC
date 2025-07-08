@@ -1,0 +1,367 @@
+@prefix ns1: <http://www.w3.org/2004/02/skos/core#> .
+@prefix ns2: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix ns4: <http://purl.org/dc/elements/1.1/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://schema.org/City> a owl:Class ;
+    rdfs:label "City" ;
+    rdfs:comment "A city or town." ;
+    rdfs:subClassOf <http://schema.org/AdministrativeArea> .
+
+<http://schema.org/Country> a owl:Class ;
+    rdfs:label "Country" ;
+    rdfs:comment "A country." ;
+    rdfs:subClassOf <http://schema.org/AdministrativeArea> .
+
+<http://schema.org/State> a owl:Class ;
+    rdfs:label "State" ;
+    rdfs:comment "A state or province of a country." ;
+    rdfs:subClassOf <http://schema.org/AdministrativeArea> .
+
+<http://schema.org/containedInPlace> a owl:ObjectProperty ;
+    rdfs:label "contained in place" ;
+    rdfs:comment "The basic containment relation between a place and one that contains it." ;
+    rdfs:domain <http://schema.org/Place> ;
+    rdfs:range <http://schema.org/Place> .
+
+<http://schema.org/containsPlace> a owl:ObjectProperty ;
+    rdfs:label "contains place" ;
+    rdfs:comment "The basic containment relation between a place and another that it contains." ;
+    rdfs:domain <http://schema.org/Place> ;
+    rdfs:range <http://schema.org/Place> .
+ 
+
+<http://schema.org/name> a owl:DatatypeProperty ;
+    rdfs:domain <http://schema.org/Place> ;
+    rdfs:range xsd:string .
+
+
+<https://ontology.tno.nl/logistics/federated/DigitalTwin#Pallets> a owl:Class ;
+    rdfs:label "Pallets" ;
+    rdfs:comment "A pallet is a flat transport structure, which supports goods in a stable fashion while being lifted by a forklift, a pallet jack, a front loader, a jacking device, or an erect crane. A pallet is the structural foundation of a unit load which allows handling and storage efficiencies." ;
+    rdfs:subClassOf <https://ontology.tno.nl/logistics/federated/DigitalTwin#RTI> .
+
+
+<https://ontology.tno.nl/logistics/federated/DigitalTwin#UUID> a rdf:Property ;
+    rdfs:label "UUID" ;
+    rdfs:comment "" ;
+    rdfs:domain <https://ontology.tno.nl/logistics/federated/DigitalTwin#PhysicalObject> ;
+    rdfs:range xsd:string ;
+    ns1:altLabel "IMO0140" .
+
+
+<https://ontology.tno.nl/logistics/federated/DigitalTwin#country> a rdf:Property ;
+    rdfs:comment "" ;
+    rdfs:domain <https://ontology.tno.nl/logistics/federated/DigitalTwin#PhysicalObject> ;
+    rdfs:range xsd:string .
+
+
+<https://ontology.tno.nl/logistics/federated/DigitalTwin#documentID> a owl:DatatypeProperty ;
+    rdfs:domain <https://ontology.tno.nl/logistics/federated/DigitalTwin#Document> ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf <https://ontology.tno.nl/logistics/federated/DigitalTwin#PhysicalObjectProperties> .
+
+<https://ontology.tno.nl/logistics/federated/DigitalTwin#documentVersion> a owl:DatatypeProperty ;
+    rdfs:domain <https://ontology.tno.nl/logistics/federated/DigitalTwin#Document> ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf <https://ontology.tno.nl/logistics/federated/DigitalTwin#PhysicalObjectProperties> .
+
+
+<https://ontology.tno.nl/logistics/federated/DigitalTwin#equipmentSize> a owl:DatatypeProperty ;
+    rdfs:label "Equipment Container Size" ;
+    rdfs:subPropertyOf <https://ontology.tno.nl/logistics/federated/DigitalTwin#equipmentProperties> .
+
+
+<https://ontology.tno.nl/logistics/federated/DigitalTwin#externalIdentifier> a rdf:Property ;
+    rdfs:label "Additional Reference code" ;
+    rdfs:comment "" ;
+    rdfs:domain <https://ontology.tno.nl/logistics/federated/DigitalTwin#PhysicalObject> ;
+    rdfs:range xsd:string .
+
+<https://ontology.tno.nl/logistics/federated/DigitalTwin#goodsDescription> a owl:DatatypeProperty ;
+    rdfs:label "Goods Description" ;
+    rdfs:domain <https://ontology.tno.nl/logistics/federated/DigitalTwin#Goods> ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf <https://ontology.tno.nl/logistics/federated/DigitalTwin#PhysicalObjectProperties> .
+
+
+<https://ontology.tno.nl/logistics/federated/DigitalTwin#grossWeight> a owl:DatatypeProperty ;
+    rdfs:label "Gross Weight" ;
+    rdfs:domain <https://ontology.tno.nl/logistics/federated/DigitalTwin#PhysicalObject> ;
+    rdfs:range xsd:integer ;
+    rdfs:subPropertyOf <https://ontology.tno.nl/logistics/federated/DigitalTwin#PhysicalObjectProperties> .
+
+<https://ontology.tno.nl/logistics/federated/DigitalTwin#hasDocumentType> a owl:ObjectProperty ;
+    rdfs:label "has Documnet Type" ;
+    rdfs:domain <https://ontology.tno.nl/logistics/federated/DigitalTwin#Document> ;
+    rdfs:range <https://ontology.tno.nl/logistics/federated/Classifications#DocumentType> .
+
+<https://ontology.tno.nl/logistics/federated/DigitalTwin#hasMRN_Number> a owl:DatatypeProperty ;
+    rdfs:label "MRN Number" ;
+    rdfs:range xsd:string .
+
+<https://ontology.tno.nl/logistics/federated/DigitalTwin#hasNumberOfCollies> a owl:DatatypeProperty ;
+    rdfs:label "Number of Collies" ;
+    rdfs:range xsd:integer .
+
+<https://ontology.tno.nl/logistics/federated/DigitalTwin#hasTransportmeansNationality> rdfs:domain <https://ontology.tno.nl/logistics/federated/DigitalTwin#TransportMeans> ;
+    rdfs:subPropertyOf <https://ontology.tno.nl/logistics/federated/DigitalTwin#transportMeansProperties> .
+
+
+<https://ontology.tno.nl/logistics/federated/DigitalTwin#name> a rdf:Property ;
+    rdfs:comment "" ;
+    rdfs:domain <https://ontology.tno.nl/logistics/federated/DigitalTwin#PhysicalObject> ;
+    rdfs:range xsd:string .
+
+<https://ontology.tno.nl/logistics/federated/DigitalTwin#numberofPackages> a owl:DatatypeProperty ;
+    rdfs:label "Number of Packages" ;
+    rdfs:domain <https://ontology.tno.nl/logistics/federated/DigitalTwin#Package> ;
+    rdfs:range xsd:integer ;
+    rdfs:subPropertyOf <https://ontology.tno.nl/logistics/federated/DigitalTwin#packageProperties> .
+
+
+<https://ontology.tno.nl/logistics/federated/DigitalTwin#packageTypeName> a owl:DatatypeProperty ;
+    rdfs:label "Package Type Name" ;
+    rdfs:comment "Package type name based on UNECE standardisations. Retrieved from internal project ProfileData postgres database." ;
+    rdfs:domain <https://ontology.tno.nl/logistics/federated/DigitalTwin#Package> ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf <https://ontology.tno.nl/logistics/federated/DigitalTwin#packageProperties> .
+
+
+<https://ontology.tno.nl/logistics/federated/DigitalTwin#transportMeansMode> a owl:DatatypeProperty ;
+    rdfs:label "Transport Means Mode" ;
+    rdfs:comment "A code specifying the transport means mode." ;
+    rdfs:domain <https://ontology.tno.nl/logistics/federated/DigitalTwin#TransportMeans> ;
+    rdfs:range xsd:string ;
+    ns1:altLabel "IMO0160" .
+
+
+<https://ontology.tno.nl/logistics/federated/Event> a owl:Ontology ;
+    ns4:creator "Dena Tahvildari, Maaike Burghoorn, Cornelis Bouter, Theodor Chirvasuta" ;
+    ns2:created "2020-07-17" ;
+    ns2:description "This ontology contains classes, attributes, relation about logistic Events." ;
+    ns2:issued "2021-03-15" ;
+    ns2:language "en" ;
+    ns2:modified "2023-07-18" ;
+    ns2:requires <https://ontology.tno.nl/logistics/federated/DigitalTwin>,
+        <https://ontology.tno.nl/logistics/federated/LegalPerson>,
+        <https://ontology.tno.nl/logistics/federated/Location> ;
+    owl:versionIRI <https://ontology.tno.nl/logistics/federated/Eventv-0.1> .
+
+<https://ontology.tno.nl/logistics/federated/Event#Actual> a <https://ontology.tno.nl/logistics/federated/Event#TimeClassification> ;
+    rdfs:label "Actual" .
+
+<https://ontology.tno.nl/logistics/federated/Event#BusinessAssociation> a owl:Class ;
+    rdfs:label "Business Association" ;
+    rdfs:comment "Business association event that may associate digital twin(s) with a business identifier" ;
+    rdfs:subClassOf <https://ontology.tno.nl/logistics/federated/Event#AssociationEvent> .
+
+<https://ontology.tno.nl/logistics/federated/Event#End> a <https://ontology.tno.nl/logistics/federated/Event#Milestone> ;
+    rdfs:label "End" .
+
+<https://ontology.tno.nl/logistics/federated/Event#Estimated> a <https://ontology.tno.nl/logistics/federated/Event#TimeClassification> ;
+    rdfs:label "Estimated" .
+
+<https://ontology.tno.nl/logistics/federated/Event#Expected> a <https://ontology.tno.nl/logistics/federated/Event#TimeClassification> ;
+    rdfs:label "Expected" .
+
+<https://ontology.tno.nl/logistics/federated/Event#LocationAssociation> a owl:Class ;
+    rdfs:label "Location Association" ;
+    rdfs:comment "Location Association may associate a legal person or a transport means to a location" ;
+    rdfs:subClassOf <https://ontology.tno.nl/logistics/federated/Event#AssociationEvent> .
+
+<https://ontology.tno.nl/logistics/federated/Event#Planned> a <https://ontology.tno.nl/logistics/federated/Event#TimeClassification> ;
+    rdfs:label "Planned" .
+
+<https://ontology.tno.nl/logistics/federated/Event#PrimitiveEvent> a owl:Class ;
+    rdfs:label "Primitive Event" ;
+    rdfs:comment "A primitive event represents a virtualization of a physical event, i.e. arrival, load, discharge etc." ;
+    rdfs:subClassOf <https://ontology.tno.nl/logistics/federated/Event#Event> .
+
+<https://ontology.tno.nl/logistics/federated/Event#Requested> a <https://ontology.tno.nl/logistics/federated/Event#TimeClassification> ;
+    rdfs:label "Requested" .
+
+<https://ontology.tno.nl/logistics/federated/Event#Start> a <https://ontology.tno.nl/logistics/federated/Event#Milestone> ;
+    rdfs:label "Start" .
+
+
+<https://ontology.tno.nl/logistics/federated/Event#UUID> a owl:DatatypeProperty ;
+    rdfs:label "UUID" ;
+    rdfs:comment "Every event has a UUID to be distinguishable when stored in a database." ;
+    rdfs:domain <https://ontology.tno.nl/logistics/federated/Event#Event> ;
+    rdfs:range xsd:string .
+
+<https://ontology.tno.nl/logistics/federated/Event#involvesActor> a owl:ObjectProperty ;
+    rdfs:label "Involves Actor" ;
+    rdfs:comment "This relation establishes an association between an Event and an Actor." ;
+    rdfs:domain <https://ontology.tno.nl/logistics/federated/Event#Event> ;
+    rdfs:range <https://ontology.tno.nl/logistics/federated/LegalPerson#Actor> ;
+    rdfs:subPropertyOf <https://ontology.tno.nl/logistics/federated/Event#involves> .
+
+<https://ontology.tno.nl/logistics/federated/Event#involvesBusinessIdentifier> a owl:DatatypeProperty ;
+    rdfs:label "Involves Business Identifier" ;
+    rdfs:comment "Identifier that can be used to refer to an external system the business transaction where the event is involved in (e.g., AWB / eFTI / voyage number (IMO0191))" ;
+    rdfs:domain <https://ontology.tno.nl/logistics/federated/Event#Event> ;
+    rdfs:range xsd:string ;
+    ns1:altLabel "IMO0191" .
+
+<https://ontology.tno.nl/logistics/federated/Event#involvesLocation> a owl:ObjectProperty ;
+    rdfs:label "Involves Location" ;
+    rdfs:comment "This relation establishes an association between an Event and a Location. The exact meaning depends on the type of Event, which is inferred from this property and the second association the event has." ;
+    rdfs:domain <https://ontology.tno.nl/logistics/federated/Event#Event> ;
+    rdfs:range <https://ontology.tno.nl/logistics/federated/Location#BusinessLocation> .
+
+<https://ontology.tno.nl/logistics/federated/Event#involvesMilestone> a owl:DatatypeProperty ;
+    rdfs:label "Milestone" ;
+    rdfs:comment "The milestone may be start or end." ;
+    rdfs:domain <https://ontology.tno.nl/logistics/federated/Event#Event> ;
+    rdfs:range <https://ontology.tno.nl/logistics/federated/Event#Milestone> .
+
+<https://ontology.tno.nl/logistics/federated/Event#involvesPackagingType> a owl:DatatypeProperty ;
+    rdfs:label "Involves Packaging Type" ;
+    rdfs:comment "This property denotes the packaging involved in the association of the product/goods with a package." ;
+    rdfs:domain <https://ontology.tno.nl/logistics/federated/Event#CargoAssociation> ;
+    rdfs:range xsd:string ;
+    ns1:altLabel "IMO0029" .
+
+<https://ontology.tno.nl/logistics/federated/Event#involvesTimeClassification> a owl:DatatypeProperty ;
+    rdfs:label "Has Time Classification" ;
+    rdfs:comment "Every event should have a time classification. The time classifications may be planned, estimated, expected, actual or requested." ;
+    rdfs:domain <https://ontology.tno.nl/logistics/federated/Event#Event> ;
+    rdfs:range <https://ontology.tno.nl/logistics/federated/Event#TimeClassification> .
+
+<https://ontology.tno.nl/logistics/federated/Event#involvesTimestamp> a owl:DatatypeProperty ;
+    rdfs:label "Timestamp" ;
+    rdfs:comment "The timestamp expressed as a date and time, alongside the timezone it is specified" ;
+    rdfs:range xsd:dateTime ;
+    rdfs:subPropertyOf <https://ontology.tno.nl/logistics/federated/Event#involves> ;
+    ns1:ältLabel "IMO00748" .
+
+<https://ontology.tno.nl/logistics/federated/Event#involvesTransportMeans> a owl:ObjectProperty ;
+    rdfs:label "Involves Transport Means" ;
+    rdfs:comment "This relation establishes an association between an Event and a Transport Means Digital Twin. The exact meaning depends on the type of Event and its' milestone" ;
+    rdfs:domain <https://ontology.tno.nl/logistics/federated/Event#Event> ;
+    rdfs:range <https://ontology.tno.nl/logistics/federated/DigitalTwin#TransportMeans> ;
+    rdfs:subPropertyOf <https://ontology.tno.nl/logistics/federated/Event#involvesDigitalTwin> .
+
+<https://ontology.tno.nl/logistics/federated/Location#externalIdentifier> a owl:DatatypeProperty ;
+    rdfs:label "External Identifier" ;
+    rdfs:domain <http://schema.org/Place> ;
+    rdfs:range xsd:string .
+
+<https://ontology.tno.nl/logistics/federated/Location#street> a owl:DatatypeProperty ;
+    rdfs:label "Street" ;
+    rdfs:domain <http://schema.org/Place> ;
+    rdfs:range xsd:string .
+
+<https://ontology.tno.nl/logistics/federated/Location#Zipcode> a owl:DatatypeProperty ;
+    rdfs:label "Zipcode" ;
+    rdfs:domain <http://schema.org/Place> ;
+    rdfs:range xsd:string .
+
+<https://ontology.tno.nl/logistics/federated/Location#involvesPlace> a owl:ObjectProperty ;
+    rdfs:label "Business Location Involves Location" ;
+    rdfs:domain <https://ontology.tno.nl/logistics/federated/Location#BusinessLocation> ;
+    rdfs:range <http://schema.org/Place> .
+
+<https://ontology.tno.nl/logistics/federated/Location#locationRole> a owl:ObjectProperty ;
+    rdfs:label "Business Location has role" ;
+    rdfs:domain <http://schema.org/Place> ;
+    rdfs:range <https://ontology.tno.nl/logistics/federated/LocationRoles#LocationRoles> .
+
+<https://ontology.tno.nl/logistics/federated/Location#locode> a owl:DatatypeProperty ;
+    rdfs:label "LOCODE" ;
+    rdfs:domain <http://schema.org/Place> ;
+    rdfs:range xsd:string .
+
+<https://ontology.tno.nl/logistics/federated/Event#CargoAssociation> a owl:Class ;
+    rdfs:label "Cargo Association" ;
+    rdfs:comment "Cargo association event that may associate (dangerous) goods with a transport equipment" ;
+    rdfs:subClassOf <https://ontology.tno.nl/logistics/federated/Event#AssociationEvent> .
+
+<https://ontology.tno.nl/logistics/federated/Event#involvesDigitalTwin> a owl:ObjectProperty ;
+    rdfs:label "Involves Digital Twin" ;
+    rdfs:comment "Used for grouping -- do not instantiate" ;
+    rdfs:domain <https://ontology.tno.nl/logistics/federated/Event#Event> ;
+    rdfs:range <https://ontology.tno.nl/logistics/federated/DigitalTwin#PhysicalObject> ;
+    rdfs:subPropertyOf <https://ontology.tno.nl/logistics/federated/Event#involves> .
+
+<https://ontology.tno.nl/logistics/federated/DigitalTwin#Truck> a owl:Class ;
+    rdfs:label "Truck" ;
+    rdfs:comment "A truck or lorry is a motor vehicle designed to transport cargo. Trucks vary greatly in size, power, and configuration." ;
+    rdfs:subClassOf <https://ontology.tno.nl/logistics/federated/DigitalTwin#TransportMeans> .
+
+<https://ontology.tno.nl/logistics/federated/Location#BusinessLocation> a owl:Class ;
+    rdfs:label "Business Location" ;
+    rdfs:comment "A business location couples the digitalization of the physical location as well as the role it plays in an event instantiation." .
+
+<https://ontology.tno.nl/logistics/federated/DigitalTwin#Document> a owl:Class ;
+    rdfs:label "Document" ;
+    rdfs:comment "A legal document in event and business transactions." ;
+    rdfs:subClassOf <https://ontology.tno.nl/logistics/federated/DigitalTwin#PhysicalObject> .
+
+<https://ontology.tno.nl/logistics/federated/Event#Milestone> a owl:Class ;
+    rdfs:label "Milestone" ;
+    rdfs:comment "Each Association Event should have a Milestone associated with it. At the moment, only Start and End are allowed milestones." .
+
+<https://ontology.tno.nl/logistics/federated/Event#involves> a owl:ObjectProperty ;
+    rdfs:label "Involves" ;
+    rdfs:comment "An Event has associations established with Digital Twins, Locations or Logistic Actors. The meaning of this association depends on the type of event and the its' milestone." ;
+    rdfs:domain <https://ontology.tno.nl/logistics/federated/Event#Event> ;
+    rdfs:range owl:Thing .
+
+
+<https://ontology.tno.nl/logistics/federated/Event#AssociationEvent> a owl:Class ;
+    rdfs:label "Association Event" ;
+    rdfs:comment "Association event that may associate digital twins with business identifiers or other digital twins" ;
+    rdfs:subClassOf <https://ontology.tno.nl/logistics/federated/Event#Event> .
+
+<https://ontology.tno.nl/logistics/federated/DigitalTwin#Container> a owl:Class ;
+    rdfs:label "Container" ;
+    rdfs:comment "Transport containers serve to containerize products." ;
+    rdfs:subClassOf <https://ontology.tno.nl/logistics/federated/DigitalTwin#Equipment> .
+
+<https://ontology.tno.nl/logistics/federated/DigitalTwin#Goods> a owl:Class ;
+    rdfs:comment "Defintions is needed" ;
+    rdfs:subClassOf <https://ontology.tno.nl/logistics/federated/DigitalTwin#PhysicalObject> .
+
+<https://ontology.tno.nl/logistics/federated/DigitalTwin#Package> a owl:Class ;
+    rdfs:label "Package" ;
+    rdfs:subClassOf <https://ontology.tno.nl/logistics/federated/DigitalTwin#PhysicalObject> .
+
+<https://ontology.tno.nl/logistics/federated/DigitalTwin#transportMeansProperties> a owl:DatatypeProperty ;
+    rdfs:label "Transport Means Properties" ;
+    rdfs:comment "Used for grouping -- do not instantiate" ;
+    rdfs:domain <https://ontology.tno.nl/logistics/federated/DigitalTwin#TransportMeans> .
+
+<https://ontology.tno.nl/logistics/federated/Event#TimeClassification> a owl:Class ;
+    rdfs:label "Time Classification" ;
+    rdfs:comment "Time classification can be either Planned, Estimated, Expected, Actual, Requested." .
+
+<https://ontology.tno.nl/logistics/federated/DigitalTwin#TransportMeans> a owl:Class ;
+    rdfs:label "Transport Means" ;
+    rdfs:comment """These are the vehicles that transport the cargo, such as tricks, vessels,
+trains, airplanes, barges etc.""" ;
+    rdfs:subClassOf <https://ontology.tno.nl/logistics/federated/DigitalTwin#PhysicalObject> .
+
+<https://ontology.tno.nl/logistics/federated/DigitalTwin#equipmentProperties> a owl:DatatypeProperty ;
+    rdfs:domain <https://ontology.tno.nl/logistics/federated/DigitalTwin#Equipment> ;
+    rdfs:subPropertyOf <https://ontology.tno.nl/logistics/federated/DigitalTwin#PhysicalObjectProperties> .
+
+<https://ontology.tno.nl/logistics/federated/Event#Event> a owl:Class ;
+    rdfs:label "Event" ;
+    rdfs:comment "An event reflects a conceptual association of digital twins or a virtualization of a physical event" .
+
+<http://schema.org/Place> a owl:Class ;
+    rdfs:label "Place" ;
+    rdfs:comment "Entities that have a somewhat fixed, physical extension." ;
+    rdfs:subClassOf owl:Thing .
+
+<https://ontology.tno.nl/logistics/federated/DigitalTwin#Equipment> a owl:Class ;
+    rdfs:label "Transport Equipment" ;
+    rdfs:comment "Any asset used to facilitate transport and handling of cargo." ;
+    rdfs:subClassOf <https://ontology.tno.nl/logistics/federated/DigitalTwin#PhysicalObject> .
+

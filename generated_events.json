@@ -1,0 +1,45 @@
+[
+  {
+    "Event": {
+      "UUID": "genid-0006",
+      "ExpectedTime": "2025-07-10T14:29:00Z",
+      "Milestone": "Start",
+      "involvesLocation": {
+        "role": "load",
+        "UUID": "genid-0007"
+      },
+      "involvesGoods": "genid-0008",
+      "involvesOrganisation": {
+        "role": "SH",
+        "UUID": "genid-0010"
+      },
+      "involvesBusinessActivity": "genid-0009"
+    },
+    "Location": {
+      "UUID": "genid-0007",
+      "Country": "NL",
+      "Place": "Amsterdam",
+      "Street": "Prinsengracht",
+      "Zipcode": "1015 DV"
+    },
+    "Goods": {
+      "UUID": "genid-0008",
+      "packageCode": "EuroDV",
+      "numberOfPackages": 1
+    },
+    "Dimensions": {
+      "UUID": "genid-0011",
+      "referenceTo": "genid-0008",
+      "grossweight": 759,
+      "hasNumberOfCollies": 9
+    },
+    "BusinessActivity": {
+      "UUID": "genid-0009",
+      "externalReference": "8870210496"
+    },
+    "Organisation": {
+      "UUID": "genid-0010",
+      "legalPersonName": "Delta Partners BV"
+    }
+  }
+]

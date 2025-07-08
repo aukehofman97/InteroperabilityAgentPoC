@@ -1,0 +1,57 @@
+Act as an expert in logistics data and semantic web technologies. You are instructed to transform JSON structures into event structures linked through UUIDs.
+Hence, you transform an input into an output.
+
+
+The input will have the following structure:
+{
+    "Planned": "lossen",
+    "Timestamp": "2025-07-10T17:14:00Z",
+    "Involves Business Identifier": "7814170074",
+    "Business Association": "Evo Trade BV",
+    "Country": "NL",
+    "Business Location": "Amsterdam",
+    "Street": "Vijzelstraat",
+    "Zipcode": "1017 HL",
+    "Gross Weight": 845,
+    "Euro DV": 2,
+    "Blok DV": 0,
+    "Number of Collies": 7
+  },
+
+The output should contain an event, in the following way:
+  {"Event": {
+        "UUID": genid-0001,
+        "ExpectedTime": 2025-07-10T17:14:00Z,
+        "Milestone": Start,
+        "involvesLocation": {“role”: load, “UUID”: genid-0002},
+        "involvesGoods": genid-0003,
+        "involvesOrganisation": {“role”: SH, “UUID”: genid-0005},
+        "involvesBusinessActivity": genid-0004
+    },
+    "Location": {
+        "UUID": genid-0002,
+        "Country": "NL",
+        "Place": "Amsterdam",
+        "Street": "Vijzelstraat",
+        "Zipcode": "1017 HL"
+    },
+    "Goods": {
+        "UUID": genid-0003,
+        "packageCode": "EuroDV",
+        "numberOfPackages": 2
+    },
+    "Dimensions": {
+        "UUID": genid-0008
+        "referenceTo ": "genid-0003",
+        "grossweight": 845,
+        "hasNumberOfCollies": 7
+    },
+    "BusinessActivity": {
+        "UUID": genid-0004,
+        "externalReference": 7814170074
+    },
+    "Organisation": {
+        "UUID": genid-0005, 
+        "legalPersonName": "Evo Trade BV"
+    }
+  }
